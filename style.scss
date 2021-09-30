@@ -1,0 +1,130 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Work Sans', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700;900&display=swap');
+
+$bar-width: 10em;
+$colorArray:
+  red #FF0000 #ff9999,
+  blue #0000FF #9999ff,
+  green #00FF00 #99ff99,
+  cyan #00FFFF #99ffff,
+  magenta #FF00FF #ff99ff,
+  yellow #FFFF00 #ffff99;
+$home: #ffffff;
+$off-home: #dcdcdc;
+
+.red-background {
+    background-color: #FF0000;
+}
+
+.blue-background {
+    background-color: #0000FF;
+}
+
+.green-background {
+    background-color: #00FF00;
+}
+
+.cyan-background {
+    background-color: #00FFFF;
+}
+
+.magenta-background {
+    background-color: #FF00FF;
+}
+
+.yellow-background {
+    background-color: #FFFF00;
+}
+
+body {
+    position: relative;
+}
+
+header {
+    display: flex;
+    align-items: center;
+}
+
+h1, h2 {
+    text-align: center;
+    padding: 0 2em;
+}
+
+.icon-wrapper {
+    width: $bar-width;
+    height: 10em;
+    background-color: $home;
+    box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.75);
+    border-radius: 5%;
+    z-index: 100;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $off-home;
+    }
+
+    &:active {
+        box-shadow: none;
+        transform: translatex(2px) translatey(2px);
+    }
+}
+
+nav {
+    width: $bar-width;
+    font-weight: bolder;
+    cursor: pointer;
+    position: absolute;
+    transform: translatey(-800px);
+    transition: transform 300ms ease;
+
+    ul {
+        list-style: none;
+
+        li {
+            padding: 10% 10%;
+            margin: 2px 0;
+            width: 100%;
+            text-align: center;
+            box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.75);
+            border-radius: 5%;
+            
+            &:active{
+                box-shadow: none;
+                transform: translatex(2px) translatey(2px);
+            }
+        }
+    }
+}
+
+li.white {
+    background-color: $home;
+
+    &:hover {
+        background-color: $off-home;
+    }
+
+}
+
+@each $color, $full-col, $off-col in $colorArray {
+    li.#{$color} {
+        background-color: $full-col;
+
+        &:hover {
+            background-color: $off-col;
+        }
+    }
+}
+
+.unfolded {
+    transform: translatey(0px);
+}
